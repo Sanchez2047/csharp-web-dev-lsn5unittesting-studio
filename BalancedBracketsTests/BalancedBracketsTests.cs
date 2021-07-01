@@ -13,59 +13,59 @@ namespace BalancedBracketsTests
         [TestMethod]
         public void OnlyBracketReturnTrue1()
         {
-            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[]"));
+            Assert.IsTrue(BalancedBrackets.HasBalancedBracketsNew("[]"));
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void OnlyBracketReturnFalse2()
         {
-            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("[[[]][[]]]][[]["));
+            Assert.IsFalse(BalancedBrackets.HasBalancedBracketsNew("[[[]][[]]]][[]["));
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void OnlyBracketReturnTrue3()
         {
-            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[]][[]][][]"));
+            Assert.IsTrue(BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[]][[]][][]"));
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void OnlyBracketReturnFalse4()
         {
-            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[][[[]][][["));
+            Assert.IsFalse(BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[][[[]][][["));
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void AmountOfBracketEven5()
         {
-            BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[][[[]][][[");
+            BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[][[[]][][[");
             Assert.IsTrue(BalancedBrackets.BracketList.Count % 2 == 0);
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void OpeningBracketBeforeClosingBracket6()
         {
-            BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[][[[]][][[");
+            BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[][[[]][][[");
             Assert.IsTrue(BalancedBrackets.BracketList.IndexOf('[') < BalancedBrackets.BracketList.IndexOf(']'));
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void IndexOfOpening7()
         {
-            BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[][[[]][][[");
+            BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[][[[]][][[");
             Assert.AreEqual(0, BalancedBrackets.BracketList.IndexOf('['), .001);
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void IndexOfClosing8()
         {
-            BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[][[[]][][[");
+            BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[][[[]][][[");
             Assert.AreEqual(1, BalancedBrackets.BracketList.IndexOf(']'), .001);
             BalancedBrackets.BracketList.Clear();
         }
         [TestMethod]
         public void CountBracketList9()
         {
-            BalancedBrackets.HasBalancedBrackets("[Launch]Code[[[]]][][[]][[]][][]");
+            BalancedBrackets.HasBalancedBracketsNew("[Launch]Code[[[]]][][[]][[]][][]");
             Assert.AreEqual(22, BalancedBrackets.BracketList.Count, .001);
             BalancedBrackets.BracketList.Clear();
         }
@@ -86,6 +86,12 @@ namespace BalancedBracketsTests
         {
             BalancedBrackets.BracketsToBracketList("[Launch]Code[[[]]][][[]][[]][][]");
             Assert.AreEqual(0, BalancedBrackets.NumberBalance(), .001);
+            BalancedBrackets.BracketList.Clear();
+        }
+        [TestMethod]
+        public void CheckOppositeBracket13()
+        {
+            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("Launch]Code["));
             BalancedBrackets.BracketList.Clear();
         }
     }

@@ -58,7 +58,7 @@ namespace BalancedBracketsNS
             return brackets;
         }
 
-        public static bool HasBalancedBrackets(string str1)
+        public static bool HasBalancedBracketsNew(string str1)
         {
             bool success = false;
             BracketsToBracketList(str1);
@@ -69,6 +69,29 @@ namespace BalancedBracketsNS
             //BracketList.Clear();
 
             return success;
+        }
+        public static bool HasBalancedBrackets(String str)
+        {
+            int brackets = 0;
+            foreach (char ch in str.ToCharArray())
+            {
+                if (brackets >= 0)
+                {
+                    if (ch == '[')
+                    {
+                        brackets++;
+                    }
+                    else if (ch == ']')
+                    {
+                        brackets--;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return brackets == 0;
         }
 
     }
